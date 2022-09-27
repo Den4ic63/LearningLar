@@ -13,7 +13,7 @@
                         {{session('status')}}
                     </div>
                 @endif
-                <form method="post" action="{{route('pdf')}}">
+                <form method="post" action="{{route('pdf')}}" enctype="multipart/form-data">
                     @csrf
                     <!-- Name File -->
                     <div>
@@ -43,6 +43,12 @@
                     <div>
                         <x-input-label for="city" :value="__('City')" />
                         <x-text-input id="city" class="block mt-1 w-full" type="text" name="city" :value="old('city')" required autofocus />
+                    </div>
+
+                    <!-- Photo  -->
+                    <div>
+                        <x-input-label for="Image" :value="__('Image')" />
+                        <x-text-input id="image" class="block mt-1 w-full" type="file" name="image" :value="old('image')" required autofocus />
                     </div>
 
                     <div class="flex items-center justify-end mt-4">
