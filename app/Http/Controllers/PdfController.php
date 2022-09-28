@@ -19,17 +19,17 @@ class PdfController extends Controller
     {
         // resize the image to a height of 200 and constrain aspect ratio (auto width)
 
-//        $path=$request->file('image')->store('app/public','public');
         $image=$request->file('image');
-        Image::make($image)->resize(null, 200, function ($constraint){$constraint->aspectRatio();});
-        $image->store('app/public','public');
-
+        $extension = 'jpg';
+        $filename = uniqid() . '.' . $extension;
+        Image::make($image)->resize(null, 200, function ($constraint){$constraint->aspectRatio();})->save(storage_path('app/public/app/public/'.$filename));
         $data = [
             'Name_file' => $request->name_file,
             'name' =>$request->name,
             'date'=>$request->date,
             'Country'=>$request->Country,
             'city'=>$request->city,
+            'file'=>$filename
         ];
 
         $pdf = PDF::loadView('pdf', $data);

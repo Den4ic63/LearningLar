@@ -12,5 +12,6 @@
 <p>{{ $date }}</p>
 <p>{{$Country}}</p>
 <p>{{$city}}</p>
+<img src="{{storage_path('app/public/app/public/'.$file)}}">
 </body>
 </html>
